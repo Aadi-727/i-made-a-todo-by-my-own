@@ -66,14 +66,16 @@ document.addEventListener("DOMContentLoaded", Display.displayTodos);
 document.getElementById("add").addEventListener("click", (e) => {
 	const title = document.getElementById("input").value;
 	const todo = new Todo(title, false);
+	Display.addTodoToUI(todo);
 	document.getElementById("input").value = "";
 });
 
-// * Withe Enter key
+// * Witheeee Enter key
 document.getElementById("input").addEventListener("keypress", (e) => {
 	if (e.key === "Enter") {
 		const title = document.getElementById("input").value;
 		const todo = new Todo(title, false);
+		Display.addTodoToUI(todo);
 		document.getElementById("input").value = "";
 	}
 });
