@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+			integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<title>ZOyo Todo</title>
+	</head>
+	<body>
+		<div class="card">
+			<!-- Head -->
+			<header class="header">
+				<h2>
+					Todo App <span class="todo-i"><i class="fa fa-tasks"></i></span>
+				</h2>
+
+				<p>You have some work to do</p>
+			</header>
+			<!-- Input add todo -->
+			<div class="todo-add">
+				<label for="input">Todos</label>
+				<input type="text" id="input" placeholder="Todos Goes here" />
+				<input type="submit" value="Add" class="btn btn-submit" id="add" />
+			</div>
+			<!-- Todo list -->
+
+			<!-- //////////////////////////////////////////// -->
+
+			<ul id="todo" class="todo-list">
+				<!-- <li>
+					<h4>Todo 1</h4>
+					<div class="actions">
+						<i class="fas fa-times delete"></i>
+						<input type="checkbox" name="" id="check-box" class="check-box" />
+					</div>
+				</li> -->
+			</ul>
+
+			<!-- //////////////////////////////////////////// -->
+		</div>
+		<script src="main.js"></script>
+	</body>
+</html>
