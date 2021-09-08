@@ -60,6 +60,18 @@ class Display {
 	static deleteCompleted(completed) {
 		completed.forEach((c) => c.parentElement.parentElement.remove());
 	}
+	static displayAlert(msg, type) {
+		const alertBox = document.createElement("div");
+		alertBox.classList.add("alert");
+		alertBox.classList.add(`${type}`);
+		alertBox.innerHTML = ` <h3>${msg}</h3>`;
+		const header = document.getElementById("header");
+		header.insertBefore(alertBox, header.lastElementChild);
+
+		setTimeout(() => {
+			alertBox.remove();
+		}, 3000);
+	}
 }
 
 // ! Dead
@@ -78,6 +90,7 @@ document.getElementById("add").addEventListener("click", (e) => {
 
 	const todo = new Todo(title, false);
 	Display.addTodoToUI(todo);
+	Display.displayAlert("Todo Added", "success");
 	document.getElementById("input").value = "";
 });
 
@@ -87,6 +100,7 @@ document.getElementById("input").addEventListener("keypress", (e) => {
 		const title = document.getElementById("input").value;
 		const todo = new Todo(title, false);
 		Display.addTodoToUI(todo);
+		Display.displayAlert("Todo Added", "success");
 		document.getElementById("input").value = "";
 	}
 });
@@ -96,6 +110,7 @@ document.getElementById("input").addEventListener("keypress", (e) => {
 const todoUl = document.getElementById("todo");
 todoUl.addEventListener("click", (e) => {
 	Display.deleteTodo(e.target);
+	Display.displayAlert("Todo Deleted", "danger");
 });
 
 //* Delete Completed Button
@@ -104,6 +119,7 @@ document.getElementById("completed").addEventListener("click", (e) => {
 	Display.deleteCompleted(
 		[...checkboxChecked].filter((check) => check.checked === true)
 	);
+	Display.displayAlert("Completed Todos Deleted", "danger");
 });
 
 //* Delete Completed Todo
@@ -114,4 +130,5 @@ document.addEventListener("keypress", (e) => {
 			[...checkboxChecked].filter((check) => check.checked === true)
 		);
 	}
+	Display.displayAlert("Completed Todos Deleted", "danger");
 });
