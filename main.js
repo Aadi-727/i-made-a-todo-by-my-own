@@ -129,6 +129,6 @@ document.addEventListener("keypress", (e) => {
 		Display.deleteCompleted(
 			[...checkboxChecked].filter((check) => check.checked === true)
 		);
+		Display.displayAlert("Completed Todos Deleted", "danger");
 	}
-	Display.displayAlert("Completed Todos Deleted", "danger");
 });
