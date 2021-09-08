@@ -58,7 +58,7 @@ class Display {
 		}
 	}
 	static deleteCompleted(completed) {
-		console.log(completed);
+		completed.forEach((c) => c.parentElement.parentElement.remove());
 	}
 }
 
@@ -95,6 +95,14 @@ document.getElementById("input").addEventListener("keypress", (e) => {
 const todoUl = document.getElementById("todo");
 todoUl.addEventListener("click", (e) => {
 	Display.deleteTodo(e.target);
+});
+
+//* Delete Completed Button
+document.getElementById("completed").addEventListener("click", (e) => {
+	const checkboxChecked = document.querySelectorAll("#check-box");
+	Display.deleteCompleted(
+		[...checkboxChecked].filter((check) => check.checked === true)
+	);
 });
 
 //* Delete Completed Todo

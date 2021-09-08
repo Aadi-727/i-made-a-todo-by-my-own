@@ -114,6 +114,15 @@ header p {
 .todo-add input[type="text"]::placeholder {
 	font-size: 14px;
 }
+.todo-add .buttons {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 10px 0;
+}
+.todo-add .buttons .complete {
+	background-color: var(--dark);
+}
 
 /* ////////////////////////////////////////////////////////////////// */
 /* ? List */
