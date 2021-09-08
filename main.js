@@ -27,9 +27,9 @@ class Display {
 
 		const todos = StoredTodos;
 		todos.forEach((todo) => Display.addTodoToUI(todo));
-		todos
-			.filter((todo) => todo.isCompleted === true)
-			.forEach((todo, index) => Display.deleteCompleted(todo, index));
+		// todos
+		// 	.filter((todo) => todo.isCompleted === true)
+		// 	.forEach((todo, index) => Display.deleteCompleted(todo, index));
 	}
 
 	static addTodoToUI(todo) {
@@ -55,11 +55,9 @@ class Display {
 	static deleteTodo(el) {
 		if (el.classList.contains("delete")) {
 			el.parentElement.parentElement.remove();
-		} else {
-			console.log("nope");
 		}
 	}
-	static deleteCompleted(completed, index) {
+	static deleteCompleted(completed) {
 		console.log(completed);
 	}
 }
@@ -97,4 +95,14 @@ document.getElementById("input").addEventListener("keypress", (e) => {
 const todoUl = document.getElementById("todo");
 todoUl.addEventListener("click", (e) => {
 	Display.deleteTodo(e.target);
+});
+
+//* Delete Completed Todo
+document.addEventListener("keypress", (e) => {
+	const checkboxChecked = document.querySelectorAll("#check-box");
+	if (e.ctrlKey === true && e.code === "KeyB") {
+		Display.deleteCompleted(
+			[...checkboxChecked].filter((check) => check.checked === true)
+		);
+	}
 });
