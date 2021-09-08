@@ -13,7 +13,7 @@ class Display {
 		let StoredTodos = [
 			{
 				title: "paint",
-				isCompleted: false,
+				isCompleted: true,
 			},
 			{
 				title: "code",
@@ -27,6 +27,9 @@ class Display {
 
 		const todos = StoredTodos;
 		todos.forEach((todo) => Display.addTodoToUI(todo));
+		todos
+			.filter((todo) => todo.isCompleted === true)
+			.forEach((todo, index) => Display.deleteCompleted(todo, index));
 	}
 
 	static addTodoToUI(todo) {
@@ -35,8 +38,6 @@ class Display {
 		let checked = "";
 		if (todo.isCompleted === true) {
 			checked = "checked";
-		} else {
-			checked = "";
 		}
 
 		li.innerHTML = `
@@ -49,6 +50,17 @@ class Display {
 		
 		`;
 		ul.appendChild(li);
+	}
+
+	static deleteTodo(el) {
+		if (el.classList.contains("delete")) {
+			el.parentElement.parentElement.remove();
+		} else {
+			console.log("nope");
+		}
+	}
+	static deleteCompleted(completed, index) {
+		console.log(completed);
 	}
 }
 
@@ -78,4 +90,11 @@ document.getElementById("input").addEventListener("keypress", (e) => {
 		Display.addTodoToUI(todo);
 		document.getElementById("input").value = "";
 	}
+});
+
+//* Delete Event Btn
+
+const todoUl = document.getElementById("todo");
+todoUl.addEventListener("click", (e) => {
+	Display.deleteTodo(e.target);
 });
