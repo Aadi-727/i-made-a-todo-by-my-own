@@ -11,6 +11,9 @@
 	--comp: #f2caa7;
 	--light: #73a2bf;
 	--rich: #03588c;
+	--green: rgb(71, 194, 106);
+	--red: rgb(213, 43, 43);
+	--glow: 0 0 10px #f2caa7;
 }
 body {
 	font-family: "Lato", sans-serif;
@@ -171,4 +174,21 @@ header p {
 }
 .todo-list li .actions .delete:hover {
 	transform: scale(1.2);
+}
+
+/*? Alerts */
+
+.alert {
+	background-color: var(--light);
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: var(--glow);
+}
+.success {
+	background-color: var(--green);
+	box-shadow: var(--glow);
+}
+.danger {
+	background-color: var(--red);
+	box-shadow: var(--glow);
 }

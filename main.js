@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", Display.displayTodos);
 //* With add Btn
 document.getElementById("add").addEventListener("click", (e) => {
 	const title = document.getElementById("input").value;
+
 	const todo = new Todo(title, false);
 	Display.addTodoToUI(todo);
 	document.getElementById("input").value = "";
