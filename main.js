@@ -55,6 +55,7 @@ class Display {
 	static deleteTodo(el) {
 		if (el.classList.contains("delete")) {
 			el.parentElement.parentElement.remove();
+			Display.displayAlert("Todo Deleted", "danger");
 		}
 	}
 	static deleteCompleted(completed) {
@@ -101,11 +102,11 @@ class Storage {
 		});
 		localStorage.setItem("todos", JSON.stringify(todos));
 	}
-	static removeCompleted(complete) {
-		let todos = Storage.getTodos();
-		todos = complete.forEach((todo) => todo.filter((t) => t.checked != true));
-		localStorage.setItem("todos", JSON.stringify(todos));
-	}
+	// static removeCompleted(complete) {
+	// 	let todos = Storage.getTodos();
+	// 	todos = complete.forEach((todo) => todo.filter((t) => t.checked != true));
+	// 	localStorage.setItem("todos", JSON.stringify(todos));
+	// }
 }
 
 // ! Dead
@@ -157,12 +158,12 @@ const todoUl = document.getElementById("todo");
 todoUl.addEventListener("click", (e) => {
 	Display.deleteTodo(e.target);
 	Storage.removeTodo(e.target.parentElement.previousElementSibling.textContent);
-	Display.displayAlert("Todo Deleted", "danger");
 });
 
-//* Delete Completed Button
+/* //* Delete Completed Button
 document.getElementById("completed").addEventListener("click", (e) => {
 	const checkboxChecked = document.querySelectorAll("#check-box");
+
 	Display.deleteCompleted(
 		[...checkboxChecked].filter((check) => check.checked === true)
 	);
@@ -182,3 +183,4 @@ document.addEventListener("keypress", (e) => {
 		Display.displayAlert("Completed Todos Deleted", "danger");
 	}
 });
+ */
